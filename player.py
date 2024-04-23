@@ -24,6 +24,14 @@ class Player:
         """Function changes the score of the player"""
         self.score = score
 
+    def get_difficulty_level(self):
+        """Function returns the difficulty level"""
+        return self.difficulty_level
+
+    def set_difficulty_level(self, difficulty_level):
+        """Function changes the difficulty level"""
+        self.difficulty_level = difficulty_level
+
     def reset_score(self):
         """Function resets the score of the player """
         self.score = 0
