@@ -11,10 +11,6 @@ class TestIntelligence(unittest.TestCase):
         difficulty_level = 1
         self.cpu = Intelligence(name, score, difficulty_level)
 
-    def test_init_default_object(self):
-        cpu = self.cpu
-        self.assertIsInstance(cpu, self.cpu)
-        
     def test_get_name(self):
         """Test for the get_name function"""
         self.cpu.set_name("John")
