@@ -39,3 +39,4 @@ class Intelligence:
     def reset_score(self):
         """Function resets the score to 0"""
         self.score = 0
+        return self.score
