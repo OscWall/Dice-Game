@@ -35,3 +35,7 @@ class Intelligence:
             raise ValueError("Difficulty level can not be over hard")
         else:
             self.difficulty_level = difficulty_level
+
+    def reset_score(self):
+        """Function resets the score to 0"""
+        self.score = 0
