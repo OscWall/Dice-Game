@@ -1,0 +1,27 @@
+import pickle
+
+class HighScore:
+    def __init__(self, filename='Leaderboard.bin'):
+        self.filename = filename
+        self.scores = self.load_scores()
+
+    def load_scores(self):
+        try:
+            with open(self.filename, 'rb') as file:
+                return pickle.load(file)
+        except (FileNotFoundError, EOFError):
+            return {}
+
+    def record_win(self, player_name):
+        self.scores[player_name] = self.scores.get(player_name, 0) + 1
+        self.save_scores()
+
+    def save_scores(self):
+        with open(self.filename, 'wb') as file:
+            pickle.dump(self.scores, file)
+
+    def get_wins(self, player_name):
+        return self.scores.get(player_name, 0)
+
+    def get_highscore_list(self):
+        return sorted(self.scores.items(), key=lambda item: item[1], reverse=True)
