@@ -35,3 +35,4 @@ class Player:
     def reset_score(self):
         """Function resets the score of the player """
         self.score = 0
+        return self.score

@@ -47,6 +47,11 @@ class TestPlayer(unittest.TestCase):
         difficulty_level = self.player.get_difficulty_level()
         self.assertNotEqual(score, difficulty_level)
 
+    def test_reset_score(self):
+        """Test for the reset_score function"""
+        score = self.player.reset_score()
+        self.assertEqual(score, 0, "The score hasn't been reset")
+
 
 if __name__ == "__main__":
     unittest.main()
