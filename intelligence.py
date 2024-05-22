@@ -36,6 +36,10 @@ class Intelligence:
         else:
             self.difficulty_level = difficulty_level
 
+    def add_score(self, score_to_add):
+        """Score used to add score to the current score"""
+        self.score += score_to_add
+
     def reset_score(self):
         """Function resets the score to 0"""
         self.score = 0
