@@ -26,7 +26,7 @@ class DiceHand():
                 score += score_to_check_dice1
                 score += score_to_check_dice2
                 player.add_score(score)
-                return True
+                return False
             elif (score_to_check_dice1 == 1 and score_to_check_dice2 == 1):
                 player.reset_score()
                 return False
@@ -44,7 +44,7 @@ class DiceHand():
             if (score_to_check_dice1 == 1 or score_to_check_dice2 == 1):
                 score += score_to_check_dice1
                 score += score_to_check_dice2
-                return True
+                return False
             elif (score_to_check_dice1 == 1 and score_to_check_dice2 == 1):
                 player.reset_score()
                 return False
@@ -62,14 +62,14 @@ class DiceHand():
             if (score_to_check_dice1 == 1 or score_to_check_dice2 == 1):
                 score += score_to_check_dice1
                 score += score_to_check_dice2
-                return True
+                return False
             elif (score_to_check_dice1 == 1 and score_to_check_dice2 == 1):
                 score = player.reset_score()
                 return False
             else:
                 score += score_to_check_dice1
                 score += score_to_check_dice2
-                return False
+                return True
 
     def roll_pvp(self, player, dice1, dice2):
         """Function performs rolls for both players"""
@@ -81,7 +81,7 @@ class DiceHand():
             score += score_to_check_dice1
             score += score_to_check_dice2
             player.add_score(score)
-            return True
+            return False
 
         elif (score_to_check_dice1 == 1 and score_to_check_dice2 == 1):
             player.reset_score()
