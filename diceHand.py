@@ -90,5 +90,5 @@ class DiceHand():
         else:
             score += score_to_check_dice1
             score += score_to_check_dice2
-            player.addScore(score)
+            player.add_score(score)
             return True
