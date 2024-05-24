@@ -40,6 +40,10 @@ class DiceHand():
         if score_to_check_dice1 == 1 and score_to_check_dice2 == 1:
             player.reset_score()
             return False
+        elif score_to_check_dice1 == 1 or score_to_check_dice2 == 1:
+            score += score_to_check_dice1 + score_to_check_dice2
+            player.add_score(score)
+            return False
         else:
             score += score_to_check_dice1 + score_to_check_dice2
             player.add_score(score)

@@ -126,67 +126,90 @@ for the difficulty level""")
 
     - type help for all the commands\n""")
 
+    def roll_cpu(self):
+        condition = True
+        while condition:
+            if self.dice_hand.roll_pvi(self.player_1, self.dice_1, self.dice_2):
+                print(f"{self.cpu.get_name()}'s score: {self.cpu.get_score()}")
+                user_input = self.dice_hand.roll_or_not()
+                try:
+                    user_input_int = int(user_input)
+                except ValueError:
+                    print("Invalid input")
+                if user_input_int == 2:
+                    self.counter_cpu += 1
+                    break
+            else:
+                print(f"{self.cpu.get_name()}'s score: {self.cpu.get_score()}")
+                self.counter_cpu += 1
+                break
+
+    def roll_player_1(self):
+        condition = True
+        while condition:
+            if self.dice_hand.roll_pvp(self.player_1, self.dice_1, self.dice_2):
+                print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
+                user_input = input("Do you want to 1. Roll again 2. Hold")
+                try:
+                    user_input_int = int(user_input)
+                except ValueError:
+                    print("Invalid input")
+                if user_input_int == 2:
+                    self.counter_player_1 += 1
+                    break
+            else:
+                print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
+                self.counter_player_1 += 1
+                break
+
+    def roll_player_2(self):
+        condition = True
+        while condition:
+            if self.dice_hand.roll_pvp(self.player_2, self.dice_1, self.dice_2):
+                print(f"{self.player_2.get_name()}'s score: {self.player_2.get_score()}")
+                user_input = input("Do you want to 1.roll again 2. hold")
+                try:
+                    user_input_int = int(user_input)
+                except ValueError:
+                    print("Invalid input")
+                if user_input_int == 2:
+                    self.counter_player_2 += 1
+                    break
+            else:
+                print(f"{self.player_2.get_name()}'s score: {self.player_2.get_score()}")
+                self.counter_player_2 += 1
+                break
+      
     def do_roll(self, args):
         # If it's player v player
-        condition = True
         if self.player_1 is None:
             print("Please start the game first")
             return False
-        else:
+        else: 
             if self.player_2 is not None:
-                if self.player_1.get_score() < 100 and self.player_2.get_score() < 100:
+                if self.player_1.get_score() < 100 or self.player_2.get_score() < 100:
                     if self.counter_player_1 == self.counter_player_2:
                         print(f"It's {self.player_1.get_name()}s turn")
-                        while condition:
-                            if self.dice_hand.roll_pvp(self.player_1, self.dice_1, self.dice_2):
-                                print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
-                                user_input = input("Do you want to 1. Roll again 2. Hold")
-                                try:
-                                    user_input_int = int(user_input)
-                                except ValueError:
-                                    print("Invalid input")
-                                if user_input_int == 2:
-                                    self.counter_player_1 += 1
-                                    break
+                        self.roll_player_1()
                     else:
                         print(f"It's {self.player_2.get_name()}s turn")
-                        print(f"{self.player_1.get_name()} has rolled")
-                        while condition:
-                            if self.dice_hand.roll_pvp(self.player_2, self.dice_1, self.dice_2):
-                                print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
-                                user_input = input("Do you want to 1.roll again 2. hold")
-                                try:
-                                    user_input_int = int(user_input)
-                                except ValueError:
-                                    print("Invalid input")
-                                if user_input_int == 2:
-                                    self.counter_player_2 += 1
-                                    break
-                    #if counter_player_1 == counter_player_2:
-                    #    counter_player_1 += 1
-                    #else:
-            
-                    #    counter_player_2 += 1
-            else:
-                if self.player_1.get_score() < 100 and self.cpu.get_score < 100:
-                    if counter_player_1 == counter_player_2:
-                        print(f"It's {self.player_1.get_name()}s turn")
-                        print(f"It's {self.player_1.get_name()}s turn")
-
-                        while condition:
-                            if self.dice_hand.roll_pvi(self.player_1, self.dice_1, self.dice_2):
-                                user_input = input("Do you want to 1.roll again 2. hold")
-                                try:
-                                    user_input_int = int(user_input)
-                                except ValueError:
-                                    print("Invalid input")
-                                if user_input_int == 2:
-                                    break
+                        print(f"{self.player_2.get_name()} has rolled")
+                        self.roll_player_2()
+                        
                 else:
-                    if counter_player_1 == counter_cpu:
-                        counter_player_1 += 1
+                    print("The game is over")
+            
+            else:
+                if self.player_1.get_score() < 100 or self.cpu.get_score < 100:
+                    if self.counter_player_1 == self.counter_cpu:
+                        print(f"It's {self.player_1.get_name()}'s turn")
+                        self.roll_player_1()
+                        
                     else:
-                        counter_cpu += 1
+                        print(f"It's {self.cpu.get_name()}'s turn")
+                        print(f"{self.cpy.get_name()} has rolled")
+                        self.roll_cpu()
+                        
 
     def do_displayScore(self, args):
         """Function used to display the score"""

@@ -15,7 +15,7 @@ class DiceHand():
         score = 0
         score_to_check_dice1 = 0
         score_to_check_dice2 = 0
-
+    
         # If cpu difficulty is easy
         if player.get_difficulty_level == 1:
             # Make sure the Dice class has a method called "get_sides"
@@ -92,3 +92,8 @@ class DiceHand():
             score += score_to_check_dice2
             player.add_score(score)
             return True
+    
+    def roll_or_not(self):
+        roll_or_not = random.randint(1, 2)
+        return roll_or_not
+    
