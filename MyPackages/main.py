@@ -281,5 +281,41 @@ Name of CPU: {self.cpu.get_name()}""")
         """Function used to make player 1 win faster for development purposes"""
         self.player_1.set_difficulty_level(3)
 
+    def do_change_name_pvp(self, args):
+        """Function used to change name if mode is pvp"""
+        if self.player_2 is not None:
+            player_to_change_name = input(f"What player will change name: 1. {self.player_1.get_name()} \n2. {self.player_2.get_name()}: ")
+            try:
+                player_to_change_name_int = int(player_to_change_name)
+            except ValueError:
+                print("Input a valid value")
+
+            if player_to_change_name_int == 1:
+                new_name = input("Enter new name: ")
+                self.player_1.set_name(new_name)
+            else:
+                new_name = input("Enter new name: ")
+                self.player_2.set_name(new_name)
+        else:
+            print("Can not use this command")
+
+    def do_change_name_pvi(self, args):
+        """Function used to change name if mode is pvi"""
+        if self.player_2 is None:
+            player_to_change_name = input(f"What player will change name: 1. {self.player_1.get_name()} \n2. {self.cpu.get_name()}: ")
+            try:
+                player_to_change_name_int = int(player_to_change_name)
+            except ValueError:
+                print("Input a valid value")
+
+            if player_to_change_name_int == 1:
+                new_name = input("Enter new name: ")
+                self.player_1.set_name(new_name)
+            else:
+                new_name = input("Enter new name: ")
+                self.cpu.set_name(new_name)
+        else:
+            print("Can not use this command")
+            
 if __name__ == '__main__':
     Main().cmdloop()
