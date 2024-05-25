@@ -24,17 +24,17 @@ After completing the outlined steps above, proceed with the following steps;
 1.Clone the repository:git clone
 2.Navigate to the project directory: Open Gitbash and navigate to the already cloned repository.
 
+### Game description
+
+Upon running the game, you will be presented with a main menu where you can choose various options:
+
 ### Run game
 
 1. To get the game running you use git pull to get the code. And then use the Cmd "Python main.py".
-2. To get help on the next step to folloe you can type "Help" and different options would be revealed to you.
+2. To get help on the next step to follow you can type "Help" and different options would be revealed to you.
 3. Use the cmd "start" to begin the game. And follow the easy steps that would be printed to you.
 4. To roll the dice, you use the cmd "roll".
 5. And to quit or exit the game, you use the cmd "quit" or "exit."
-
-### Game description
-
-### Start game▶⏯
 
 ### Game rules📝
 
