@@ -1,10 +1,12 @@
 run:
-	python Dice-Game/main.py
-
-install:
-	pip install -r requirements.txt
+	python ./MyPackages/main.py
 
 clean:
-	if exist "./build" rd /s /q build
-	if exist "./dist" rd /s /q dist
+	if exist "./_pychache_" rd /s /q _pycache_
 	if exist "./DICE_GAME.egg-info" rd /s /q DICE_GAME.egg-info
+
+#clean:
+#	if exist "./_pychache_" rd /s /q _pycache_
+#	if exist "./DICE_GAME.egg-info" rd /s /q DICE_GAME.egg-info
+
+test:
