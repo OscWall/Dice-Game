@@ -14,6 +14,7 @@ class Main(cmd.Cmd):
         self.player_1 = None
         self.player_2 = None
         self.cpu = None
+        self.user_input = None
         self.user_input_int = None
         self.dice_hand = None
         self.difficulty_level = None
@@ -41,13 +42,13 @@ class Main(cmd.Cmd):
     - The first player to score 100 or more points wins\n""")
 
     def input_choice(self):
-        user_input = input("""Welcome to the dice game
+        self.user_input = input("""Welcome to the dice game
 Select:
 1. Player vs Player
 2. Player vs CPU
 """)
         try:
-            self.user_input_int = int(user_input)
+            self.user_input_int = int(self.user_input)
             if self.user_input_int < 1 or self.user_input_int > 2:
                 print("Please enter a valid number")
                 return False
@@ -64,6 +65,7 @@ Select:
                 print("""Please input a valid number
 for the difficulty level""")
                 return False
+
         except ValueError:
             print("Input a valid value")
             return False
@@ -85,17 +87,15 @@ for the difficulty level""")
             else:
                 name_of_player_1 = input("Enter name of player 1: ")
                 name_of_cpu = input("Input name of CPU: ")
-
-                if self.input_difficulty_level():
+                print("Here")
+                if self.input_difficulty_level() is not False:
+                    print("Here")
                     self.player_1 = Player(name_of_player_1, 0, 1)
-                    self.cpu = Intelligence(name_of_cpu, 0, self.difficultyLevel_int)
+                    self.cpu = Intelligence(name_of_cpu, 0, self.difficulty_level_int)
                     self.dice_1 = Dice(6)
                     self.dice_2 = Dice(6)
                     self.dice_hand = DiceHand(self.dice_1, self.dice_2)
                     self.print_rules()
-                    return True
-                else:
-                    return False
 
     def do_exit(self, args):
         """This command exits the program"""
@@ -129,7 +129,7 @@ for the difficulty level""")
     def roll_cpu(self):
         condition = True
         while condition:
-            if self.dice_hand.roll_pvi(self.player_1, self.dice_1, self.dice_2):
+            if self.dice_hand.roll_pvi(self.cpu, self.dice_1, self.dice_2):
                 print(f"{self.cpu.get_name()}'s score: {self.cpu.get_score()}")
                 user_input = self.dice_hand.roll_or_not()
                 try:
@@ -149,7 +149,7 @@ for the difficulty level""")
         while condition:
             if self.dice_hand.roll_pvp(self.player_1, self.dice_1, self.dice_2):
                 print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
-                user_input = input("Do you want to 1. Roll again 2. Hold")
+                user_input = input("Do you want to 1. Roll again 2. Hold: ")
                 try:
                     user_input_int = int(user_input)
                 except ValueError:
@@ -157,6 +157,10 @@ for the difficulty level""")
                 if user_input_int == 2:
                     self.counter_player_1 += 1
                     break
+                elif self.counter_player_1 == 1:
+                    continue
+                else:
+                    print("Please input a valid value")
             else:
                 print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
                 self.counter_player_1 += 1
@@ -167,7 +171,7 @@ for the difficulty level""")
         while condition:
             if self.dice_hand.roll_pvp(self.player_2, self.dice_1, self.dice_2):
                 print(f"{self.player_2.get_name()}'s score: {self.player_2.get_score()}")
-                user_input = input("Do you want to 1.roll again 2. hold")
+                user_input = input("Do you want to 1.roll again 2. Hold: ")
                 try:
                     user_input_int = int(user_input)
                 except ValueError:
@@ -175,41 +179,45 @@ for the difficulty level""")
                 if user_input_int == 2:
                     self.counter_player_2 += 1
                     break
+                elif self.counter_player_1 == 1:
+                    continue
             else:
                 print(f"{self.player_2.get_name()}'s score: {self.player_2.get_score()}")
                 self.counter_player_2 += 1
                 break
-      
+
     def do_roll(self, args):
+        """Function is used to roll the dices"""
         # If it's player v player
         if self.player_1 is None:
             print("Please start the game first")
-            return False
-        else: 
-            if self.player_2 is not None:
-                if self.player_1.get_score() < 100 or self.player_2.get_score() < 100:
-                    if self.counter_player_1 == self.counter_player_2:
-                        print(f"It's {self.player_1.get_name()}s turn")
-                        self.roll_player_1()
-                    else:
-                        print(f"It's {self.player_2.get_name()}s turn")
-                        print(f"{self.player_2.get_name()} has rolled")
-                        self.roll_player_2()
-                        
+            return
+
+        if self.player_2 is not None:
+            if self.player_1.get_score() < 100 or self.player_2.get_score() < 100:
+                if self.counter_player_1 == self.counter_player_2:
+                    print(f"It's {self.player_1.get_name()}s turn")
+                    self.roll_player_1()
                 else:
-                    print("The game is over")
-            
+                    print(f"It's {self.player_2.get_name()}s turn")
+                    print(f"{self.player_2.get_name()} has rolled")
+                    self.roll_player_2()
+
             else:
-                if self.player_1.get_score() < 100 or self.cpu.get_score < 100:
-                    if self.counter_player_1 == self.counter_cpu:
-                        print(f"It's {self.player_1.get_name()}'s turn")
-                        self.roll_player_1()
-                        
-                    else:
-                        print(f"It's {self.cpu.get_name()}'s turn")
-                        print(f"{self.cpy.get_name()} has rolled")
-                        self.roll_cpu()
-                        
+                print("The game is over")
+
+        else:
+            if self.player_1.get_score() < 100 or self.cpu.get_score() < 100:
+                if self.counter_player_1 == self.counter_cpu:
+                    print(f"It's {self.player_1.get_name()}'s turn")
+                    self.roll_player_1()
+
+                else:
+                    print(f"It's {self.cpu.get_name()}'s turn")
+                    print(f"{self.cpu.get_name()} has rolled")
+                    self.roll_cpu()
+            else:
+                print("The game is over")
 
     def do_displayScore(self, args):
         """Function used to display the score"""
