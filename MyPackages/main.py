@@ -53,28 +53,25 @@ class Main(cmd.Cmd):
 
     - The first player to score 100 or more points wins\n""")
 
-    def input_choice(self):
+    def input_choice(self, user_input):
         """Function used to check so that the input is a valid number and not a letter"""
-        self.user_input = input("""Welcome to the dice game
-Select:
-1. Player vs Player
-2. Player vs CPU
-""")
+
         try:
-            self.user_input_int = int(self.user_input)
+            self.user_input_int = int(user_input)
             if self.user_input_int < 1 or self.user_input_int > 2:
                 print("Please enter a valid number")
                 return False
+            else:
+                return True
         except ValueError:
             print("Input a valid value")
             return False
+        
     
-    def input_difficulty_level(self):
+    def input_difficulty_level(self, difficulty_level):
         """Function used to check so that the input is a valid number and not a letter"""
-        self.difficulty_level = input("""Enter difficulty level
-(1. Easy 2. Medium 3. Hard):""")
         try:
-            self.difficulty_level_int = int(self.difficulty_level)
+            self.difficulty_level_int = int(difficulty_level)
             if self.difficulty_level_int < 1 or self.difficulty_level_int > 3:
                 print("""Please input a valid number
 for the difficulty level""")
@@ -92,7 +89,12 @@ for the difficulty level""")
         self.cpu = None
 
         # Checks if the user choice is an integer
-        if self.input_choice() is not False:
+        self.user_input = input("""Welcome to the dice game
+Select:
+1. Player vs Player
+2. Player vs CPU
+""")
+        if self.input_choice(self.user_input) is not False:
             if self.user_input_int == 1:
                 name_of_player_1 = input("Enter name of player 1: ")
                 name_of_player_2 = input("Enter name of player 2: ")
@@ -107,7 +109,9 @@ for the difficulty level""")
                 name_of_player_1 = input("Enter name of player 1: ")
                 name_of_cpu = input("Input name of CPU: ")
                 print("Here")
-                if self.input_difficulty_level() is not False:
+                self.difficulty_level = input("""Enter difficulty level
+(1. Easy 2. Medium 3. Hard):""")
+                if self.input_difficulty_level(self.difficulty_level) is not False:
                     print("Here")
                     self.player_1 = Player(name_of_player_1, 0, 1)
                     self.cpu = Intelligence(name_of_cpu, 0, self.difficulty_level_int)
