@@ -33,5 +33,8 @@ We recognize and accept contributions to improve the pig dice game. For any idea
 License
 This project is licensed under ......
 
+Installing make (Windows)
+If you're using windows, you can install "Make" to run ceratin commands in the project. You can do this by using Chocolatey or other package managers for windows. Open command promt or powershell with administrator rights and run the follwing commands:
+
 ENJOY THE GAME🎮🎱.
 ROLL INTO ADVENTURE AND LET LUCK BE YOUR GUIDE!!!

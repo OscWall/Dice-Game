@@ -10,10 +10,11 @@ class HighScore:
 
     def get_highscore_list(self):
         return sorted(self.scores.items(), key=lambda item: item[1], reverse=True)
+    
 highscores = HighScore()
 highscores.record_win("Player1")
 highscores.record_win("Player1")
 highscores.record_win("Player2")
-print(highscores.get_wins("Player1"))  # Output: 2
-print(highscores.get_wins("Player2"))  # Output: 1
-print(highscores.get_highscore_list())  # Output: [('Player1', 2), ('Player2', 1)]
+print(highscores.get_wins("Player1")) 
+print(highscores.get_wins("Player2"))  
+print(highscores.get_highscore_list())  

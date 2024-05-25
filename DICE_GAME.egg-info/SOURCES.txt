@@ -1,0 +1,10 @@
+LICENSE
+README.md
+setup.py
+DICE_GAME.egg-info/PKG-INFO
+DICE_GAME.egg-info/SOURCES.txt
+DICE_GAME.egg-info/dependency_links.txt
+DICE_GAME.egg-info/top_level.txt
+tests/test_dice.py
+tests/test_intelligence.py
+tests/test_player.py
