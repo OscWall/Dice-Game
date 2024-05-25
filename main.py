@@ -23,6 +23,16 @@ class Main(cmd.Cmd):
         self.counter_player_2 = 0
         self.counter_cpu = 0
 
+    def displayUI(self, player_1_name, player_2_name, player_1_score, player_2_or_cpu_score):
+        print(f"""+---------+---------+
+|   {player_1_name:6}|    {player_2_name:5}|
++---------+---------+
+|         |         |
+|{player_1_score:5}    |{player_2_or_cpu_score:5}    |
+|         |         |
++---------+---------+
+""")
+
     def print_rules(self):
         print("""The rules of the game are as follows:
 
@@ -72,6 +82,11 @@ for the difficulty level""")
 
     def do_start(self, args):
         """Starts the game"""
+        # Resets the values of players and cpu
+        self.player_1 = None
+        self.player_2 = None
+        self.cpu = None
+
         # Checks if the user choice is an integer
         if self.input_choice() is not False:
             if self.user_input_int == 1:
@@ -219,15 +234,28 @@ for the difficulty level""")
             else:
                 print("The game is over")
 
-    def do_displayScore(self, args):
+    def do_display_score(self, args):
         """Function used to display the score"""
-        pass
+        if self.player_2 is not None:
+            self.displayUI(self.player_1.get_name(), self.player_2.get_name(), self.player_1.get_score(), self.player_2.get_score())
+        else:
+            self.displayUI(self.player_1.get_name(), self.cpu.get_name(), self.player_1.get_score(), self.cpu.get_score())
 
     def do_print_users(self, args):
         """Function used to print the name of the users"""
         if self.player_2 is not None:
             print(f"""Name of Player 1: {self.player_1.get_name()}
 Name of Player 2: {self.player_2.get_name()}""")
+        else:
+            print(f"""Name of Player 1: {self.player_1.get_name()}
+Name of CPU: {self.cpu.get_name()}""")
+
+    def do_change_difficulty_level(self, args):
+        if self.player_2 is not None:
+            print("You can't change the difficulty level")
+        else:
+            if self.input_difficulty_level() is not False:
+                self.cpu.set_difficulty_level(self.difficulty_level_int)
 
 
 if __name__ == '__main__':

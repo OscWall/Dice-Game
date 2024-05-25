@@ -36,6 +36,6 @@ class Player:
         """Function resets the score of the player """
         self.score = 0
         return self.score
-    
+
     def add_score(self, score_to_be_added):
         self.score += score_to_be_added

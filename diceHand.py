@@ -27,7 +27,7 @@ class DiceHand:
         elif difficulty_level == 3:
             score_to_check_dice1 = random.randint(4, dice1.get_sides())
             score_to_check_dice2 = random.randint(4, dice2.get_sides())
-            
+
         if (score_to_check_dice1 == 1 or score_to_check_dice2 == 1):
             score += score_to_check_dice1
             score += score_to_check_dice2
