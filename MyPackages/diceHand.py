@@ -16,7 +16,6 @@ class DiceHand:
         score_to_check_dice1 = 0
         score_to_check_dice2 = 0
         difficulty_level = player.get_difficulty_level()
-        print("Here 1")
         # If cpu difficulty is easy
         if difficulty_level == 1:
             score_to_check_dice1 = random.randint(1, dice1.get_sides())
@@ -41,3 +40,7 @@ class DiceHand:
             score += score_to_check_dice2
             player.add_score(score)
             return True
+        
+    def roll_or_not(self):
+        choice = random.randint(1, 2)
+        return choice

@@ -153,8 +153,8 @@ Select:
         """Function used to roll the dice of the cpu"""
         condition = True
         while condition:
-            if self.dice_hand.roll_pvi(self.cpu, self.dice_1, self.dice_2):
-                if self.cpu.get_score() < 100:    
+            if self.dice_hand.roll_pvi_pvp(self.cpu, self.dice_1, self.dice_2):
+                if self.cpu.get_score() < 100:
                     print(f"{self.cpu.get_name()}'s score: {self.cpu.get_score()}")
                     user_input = self.dice_hand.roll_or_not()
                     try:
@@ -169,6 +169,7 @@ Select:
                     self.counter_cpu += 1
                     break
             else:
+                print(f"{self.cpu.get_name()}'s score: {self.cpu.get_score()}")
                 print("Game is over")
                 break
 
@@ -192,6 +193,7 @@ Select:
                     else:
                         print("Please input a valid value")
                 else:
+                    print(f"{self.player_1.get_name()}'s score: {self.player_1.get_score()}")
                     print("Game is over")
                     break
             else:
@@ -217,6 +219,7 @@ Select:
                     elif self.counter_player_1 == 1:
                         continue
                 else:
+                    print(f"{self.player_2.get_name()}'s score: {self.player_2.get_score()}")
                     print("Game is over")
                     break
             else:

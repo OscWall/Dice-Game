@@ -30,9 +30,9 @@ Upon running the game, you will be presented with a main menu where you can choo
 
 ### Run game
 
-1. To get the game running you use git pull to get the code. And then use the Cmd "Python main.py".
+1. To get the game running you use git pull to get the code. And then use the Cmd "make run".
 2. To get help on the next step to follow you can type "Help" and different options would be revealed to you.
-3. Use the cmd "start" to begin the game. And follow the easy steps that would be printed to you.
+3. Use the cmd "start" to begin/restart the game. And follow the easy steps that would be printed to you.
 4. To roll the dice, you use the cmd "roll".
 5. And to quit or exit the game, you use the cmd "quit" or "exit."
 
@@ -52,8 +52,6 @@ Upon running the game, you will be presented with a main menu where you can choo
 
 * To display scores, you use the cmd "displayScore"
 
-### View the high scores of both PvP & PvC
-
 ### Quit🚩
 
 To quit, you use the cmd "quit"
@@ -62,12 +60,17 @@ To quit, you use the cmd "quit"
 
 We recognize and accept contributions to improve the pig dice game. For any idea on new features, bug fixes, or enhancements, feel free to open an issue or submit a pull request.
 
-## License
+## Installing make (Windows)
 
-This project is licensed under ......
-
-Installing make (Windows)
 If you're using windows, you can install "Make" to run ceratin commands in the project. You can do this by using Chocolatey or other package managers for windows. Open command promt or powershell with administrator rights and run the follwing commands:
+
+## Using chocolatey
+Open cmd or powershell (make sure it has administrative privileges), and then type the following command:
+choco install make 
+
+After installation, you can verify that make has been installed and correctly and check the version by running:
+make --version
+
 
 ENJOY THE GAME🎮🎱.
 
