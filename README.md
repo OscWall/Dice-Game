@@ -21,8 +21,8 @@ Welcome to the pig dice game!!! A simple yet engaging game built with python for
 Before getting started ensure that you have gitbash installed on your system.
 After completing the outlined steps above, proceed with the following steps;
 
-1.Clone the repository:git clone
-2.Navigate to the project directory: Open Gitbash and navigate to the already cloned repository.
+1. Clone the repository:git clone
+2. Navigate to the project directory: Open Gitbash and navigate to the already cloned repository.
 
 ### Game description
 
@@ -66,14 +66,11 @@ We recognize and accept contributions to improve the pig dice game. For any idea
 
 This project is licensed under ......
 
-<<<<<<< HEAD
 Installing make (Windows)
 If you're using windows, you can install "Make" to run ceratin commands in the project. You can do this by using Chocolatey or other package managers for windows. Open command promt or powershell with administrator rights and run the follwing commands:
 
 ENJOY THE GAME🎮🎱.
-ROLL INTO ADVENTURE AND LET LUCK BE YOUR GUIDE!!!
-=======
-## ENJOY THE GAME🎮🎱
 
-## *ROLL INTO ADVENTURE AND LET LUCK BE YOUR GUIDE!!!*
+ROLL INTO ADVENTURE AND LET LUCK BE YOUR GUIDE
+
 >>>>>>> 725230505dacfcb56b28d0abcc59f23a4ea3f8fb
